@@ -1,0 +1,558 @@
+{
+	"info": {
+		"_postman_id": "c097b5d1-26c8-41e4-b794-012813570c91",
+		"name": "MedSavy APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18546278"
+	},
+	"item": [
+		{
+			"name": "Inventory Management APIs",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Get medicine batches by search string only",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/customer/inventory/medicine/batches?searchString=pan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"customer",
+										"inventory",
+										"medicine",
+										"batches"
+									],
+									"query": [
+										{
+											"key": "searchString",
+											"value": "pan"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All medicines",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/customer/inventory/medicines",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"customer",
+										"inventory",
+										"medicines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add item to cart",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerId\": 1,\n  \"inventoryId\": 13,\n  \"medName\": \"Pantacid IT\",\n  \"quantity\": 18,\n  \"totalPrice\": 78\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/user/customer/cart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"customer",
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get cart items",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzYXB4MyIsInJvbGUiOiJDVVNUIiwiZXhwIjoxNjU2MzAzODM0LCJpYXQiOjE2NTYyNjc4MzR9.oyfYqLMEsoQaIjKb2cj4d-VZT-b-ICtP-29MhES9XgA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/user/customer/cart/items?customerId=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"customer",
+										"cart",
+										"items"
+									],
+									"query": [
+										{
+											"key": "customerId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Place order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"customerId\":1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/orm/customer/order",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"orm",
+										"customer",
+										"order"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "subscribe to med",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"medName\": \"Zint\",\n  \"quantity\": 10,\n  \"customerId\": 1,\n  \"remindAfterMonth\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/user/customer/subscription",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"customer",
+										"subscription"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Get medicines by search string and inventory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/admin/inventory/13/medicine/batches?searchString=pan",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"admin",
+										"inventory",
+										"13",
+										"medicine",
+										"batches"
+									],
+									"query": [
+										{
+											"key": "searchString",
+											"value": "pan"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Creates or updates medicine batches",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"ABC\",\n    \"type\": \"ANTACID\",\n    \"price\": 21.20,\n    \"expiryDate\":\"2021-11-24\",\n    \"quantity\":10,\n    \"userId\":2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/admin/inventory/medicine",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"admin",
+										"inventory",
+										"medicine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all medicines by inventory id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/admin/inventory/13/medicines",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"admin",
+										"inventory",
+										"13",
+										"medicines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get sales data by sales id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/admin/inventory/sales/81",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"admin",
+										"inventory",
+										"sales",
+										"81"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete med by batch id and quantity",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"batchId\":15,\n    \"quantity\":0\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/ivm/admin/inventory/batch/16/medicines",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"ivm",
+										"admin",
+										"inventory",
+										"batch",
+										"16",
+										"medicines"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get all orders by inventory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/orm/admin/orders?inventoryId=14",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"orm",
+										"admin",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "inventoryId",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all order by inventory and date",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/api/v1/orm/admin/range/orders?inventoryId=14&date=2022-06-26 15:20:58",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"v1",
+										"orm",
+										"admin",
+										"range",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "inventoryId",
+											"value": "14"
+										},
+										{
+											"key": "date",
+											"value": "2022-06-26 15:20:58"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Creates an inventory for an user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\":3\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ivm/admin/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ivm",
+								"admin",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Inventory after sell",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"medName\":\"Pantacid IT\",\n    \"quantity\":4222,\n    \"customerId\":2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/ivm/customer/inventory/13/medicine/batches",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"ivm",
+								"customer",
+								"inventory",
+								"13",
+								"medicine",
+								"batches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user in system",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"sapx4\",\n  \"password\": \"3ratcat3\",\n  \"roles\": \"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"sapx3\",\n  \"password\": \"3ratcat3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
